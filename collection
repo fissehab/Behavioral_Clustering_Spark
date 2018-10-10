@@ -1,0 +1,1631 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\n## 1. Pivoting a dataframe",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 10, 2018 4:59:35 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538407995892_132255647",
+      "id": "20181001-153315_40340356_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch2\u003e1. Pivoting a dataframe\u003c/h2\u003e\n"
+      },
+      "dateCreated": "Oct 1, 2018 3:33:15 PM",
+      "dateSubmitted": "Oct 10, 2018 4:59:27 PM",
+      "dateStarted": "Oct 10, 2018 4:59:29 PM",
+      "dateFinished": "Oct 10, 2018 4:59:29 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "title": "Create Fake DataFrame and Pivot it: replace na by 0",
+      "text": "test_df \u003d spark.createDataFrame([(1,\u0027b\u0027,5),(1,\u0027c\u0027,10),(2,\u0027c\u0027,6),(3,\u0027a\u0027,10),(3,\u0027b\u0027,4),(3,\u0027c\u0027,5),(4,\u0027a\u0027,20)], schema \u003d [\u0027id\u0027,\u0027field\u0027,\u0027freq\u0027])\ntest_df.show()\n\ntest_df.groupBy([\"id\"]).pivot(\"field\").sum(\"freq\").na.fill(0).show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 1, 2018 3:33:15 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d1",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d2",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d3",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d4",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d5",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d6",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d7",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d8",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d9",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d10",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d11",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d12",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d13",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d14"
+          ],
+          "interpreterSettingId": "2DM2QAA2B656181532106861417"
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538193205477_-1316942796",
+      "id": "20180929-035325_1675239551_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+---+-----+----+\n| id|field|freq|\n+---+-----+----+\n|  1|    b|   5|\n|  1|    c|  10|\n|  2|    c|   6|\n|  3|    a|  10|\n|  3|    b|   4|\n|  3|    c|   5|\n|  4|    a|  20|\n+---+-----+----+\n\n+---+---+---+---+\n| id|  a|  b|  c|\n+---+---+---+---+\n|  1|  0|  5| 10|\n|  2|  0|  0|  6|\n|  4| 20|  0|  0|\n|  3| 10|  4|  5|\n+---+---+---+---+\n\n"
+      },
+      "dateCreated": "Sep 29, 2018 3:53:25 AM",
+      "dateSubmitted": "Sep 29, 2018 4:03:00 AM",
+      "dateStarted": "Sep 29, 2018 4:03:00 AM",
+      "dateFinished": "Sep 29, 2018 4:03:37 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%md\n\n## 2. Checking correlated subquery",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 10, 2018 4:59:48 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538408031915_-1483243688",
+      "id": "20181001-153351_1170449259_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch2\u003e2. Checking correlated subquery\u003c/h2\u003e\n"
+      },
+      "dateCreated": "Oct 1, 2018 3:33:51 PM",
+      "dateSubmitted": "Oct 10, 2018 4:59:45 PM",
+      "dateStarted": "Oct 10, 2018 4:59:45 PM",
+      "dateFinished": "Oct 10, 2018 4:59:45 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "title": "",
+      "text": "test \u003d spark.createDataFrame([(1,4,90.0),(2,4,5.0),(3,4,5.0),(4,3,85.0),(5,3,10.0),(6,3,5.0),(7,10,33.33),(8,10,33.33),(9,10,33.33),\\\n                                 (10,11,33.34),(11,11,33.33),(12,11,33.33)],schema \u003d [\u0027dma\u0027,\u0027zip\u0027,\u0027percentage\u0027])\n\ntest.show()\n\n\n# Correlated sub-query\n\ntest.createOrReplaceTempView(\u0027test_tbl\u0027)\nspark.sql(\"select * from test_tbl as t1 where percentage \u003d (select max(percentage) from test_tbl as t2 where t1.zip \u003d t2.zip)\").show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 1, 2018 3:33:50 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d15",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d16",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d17",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d18",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d19",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d20",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d21",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d22",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d23",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d24",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d25",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.103%3A8088%2Fproxy%2Fapplication_1538193302263_0001/jobs/job?spark\u003dtrue\u0026id\u003d26"
+          ],
+          "interpreterSettingId": "2DM2QAA2B656181532106861417"
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538193719050_1906803652",
+      "id": "20180929-040159_877444837_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+---+---+----------+\n|dma|zip|percentage|\n+---+---+----------+\n|  1|  4|      90.0|\n|  2|  4|       5.0|\n|  3|  4|       5.0|\n|  4|  3|      85.0|\n|  5|  3|      10.0|\n|  6|  3|       5.0|\n|  7| 10|     33.33|\n|  8| 10|     33.33|\n|  9| 10|     33.33|\n| 10| 11|     33.34|\n| 11| 11|     33.33|\n| 12| 11|     33.33|\n+---+---+----------+\n\n+---+---+----------+\n|dma|zip|percentage|\n+---+---+----------+\n|  1|  4|      90.0|\n|  7| 10|     33.33|\n|  8| 10|     33.33|\n|  9| 10|     33.33|\n| 10| 11|     33.34|\n|  4|  3|      85.0|\n+---+---+----------+\n\n"
+      },
+      "dateCreated": "Sep 29, 2018 4:01:59 AM",
+      "dateSubmitted": "Sep 29, 2018 4:03:21 AM",
+      "dateStarted": "Sep 29, 2018 4:03:37 AM",
+      "dateFinished": "Sep 29, 2018 4:03:45 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "title": "Multi-dimensional aggregation",
+      "text": "df \u003d spark.createDataFrame([(\"Warsaw\", 2016, 100), (\"Warsaw\", 2017, 200), (\"Boston\", 2015, 50),(\"Boston\", 2016, 150),\\\n(\"Toronto\", 2017, 50)], schema \u003d[\"city\", \"year\", \"amount\"] )",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 2, 2018 6:06:29 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538193801742_-1583699666",
+      "id": "20180929-040321_441368118_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Sep 29, 2018 4:03:21 AM",
+      "dateSubmitted": "Oct 2, 2018 6:06:29 PM",
+      "dateStarted": "Oct 2, 2018 6:06:29 PM",
+      "dateFinished": "Oct 2, 2018 6:06:29 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "df.show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 2, 2018 6:06:36 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {},
+      "version": "v1",
+      "jobName": "paragraph_1538503589287_-525357957",
+      "id": "20181002-180629_872873790_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+-------+----+------+\n|   city|year|amount|\n+-------+----+------+\n| Warsaw|2016|   100|\n| Warsaw|2017|   200|\n| Boston|2015|    50|\n| Boston|2016|   150|\n|Toronto|2017|    50|\n+-------+----+------+\n\n"
+      },
+      "dateCreated": "Oct 2, 2018 6:06:29 PM",
+      "dateSubmitted": "Oct 2, 2018 6:06:36 PM",
+      "dateStarted": "Oct 2, 2018 6:06:36 PM",
+      "dateFinished": "Oct 2, 2018 6:06:37 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "title": "3. RollUps",
+      "text": "from pyspark.sql.functions import col\n\ndf.rollup(\"city\", \"year\").sum(\u0027amount\u0027).withColumnRenamed(\"sum(amount)\", \u0027amount\u0027).\\\n   orderBy(\u0027city\u0027,\u0027year\u0027,\u0027amount\u0027, ascending \u003d [0,0,0]).filter(~col(\u0027city\u0027).isNull()).show()\n",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 10, 2018 5:00:08 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538503596173_921697981",
+      "id": "20181002-180636_475354989_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7618606231160380138.py\", line 318, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7618606231160380138.py\", line 316, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 2, in \u003cmodule\u003e\nNameError: name \u0027df\u0027 is not defined\n\n"
+      },
+      "dateCreated": "Oct 2, 2018 6:06:36 PM",
+      "dateSubmitted": "Oct 10, 2018 5:00:08 PM",
+      "dateStarted": "Oct 10, 2018 5:00:12 PM",
+      "dateFinished": "Oct 10, 2018 5:01:01 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%md\n\n### 4. Normalizing a dataframe row-wise",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 10, 2018 5:00:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538516338407_238264188",
+      "id": "20181002-213858_627634544_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch3\u003e4. Normalizing a dataframe row-wise\u003c/h3\u003e\n"
+      },
+      "dateCreated": "Oct 2, 2018 9:38:58 PM",
+      "dateSubmitted": "Oct 10, 2018 5:00:18 PM",
+      "dateStarted": "Oct 10, 2018 5:00:18 PM",
+      "dateFinished": "Oct 10, 2018 5:00:18 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "title": "Create a DataFrame",
+      "text": "m \u003d spark.createDataFrame([(5.0,5,0),(2.0,3,5),(4.0, 1,10)], schema \u003d [\u0027a\u0027,\u0027b\u0027,\u0027c\u0027])\nm.show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 2, 2018 9:39:54 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d186",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d187",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d188",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d189",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d190",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d191"
+          ],
+          "interpreterSettingId": "2DM2QAA2B656181532106861417"
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538514327451_-1186340564",
+      "id": "20181002-210527_1574132015_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+---+---+---+\n|  a|  b|  c|\n+---+---+---+\n|5.0|  5|  0|\n|2.0|  3|  5|\n|4.0|  1| 10|\n+---+---+---+\n\n"
+      },
+      "dateCreated": "Oct 2, 2018 9:05:27 PM",
+      "dateSubmitted": "Oct 2, 2018 9:39:54 PM",
+      "dateStarted": "Oct 2, 2018 9:39:55 PM",
+      "dateFinished": "Oct 2, 2018 9:39:55 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "title": "Add Column Total",
+      "text": "mm \u003d m.withColumn(\u0027total\u0027, sum(m[col] for col in m.columns))\nmm.show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 2, 2018 9:40:09 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d163",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d164",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d165",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d166",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d167",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d168"
+          ],
+          "interpreterSettingId": "2DM2QAA2B656181532106861417"
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538515956062_-1935701726",
+      "id": "20181002-213236_1110488676_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+---+---+---+-----+\n|  a|  b|  c|total|\n+---+---+---+-----+\n|5.0|  5|  0| 10.0|\n|2.0|  3|  5| 10.0|\n|4.0|  1| 10| 15.0|\n+---+---+---+-----+\n\n"
+      },
+      "dateCreated": "Oct 2, 2018 9:32:36 PM",
+      "dateSubmitted": "Oct 2, 2018 9:32:39 PM",
+      "dateStarted": "Oct 2, 2018 9:32:39 PM",
+      "dateFinished": "Oct 2, 2018 9:32:40 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "from pyspark.sql.types import *\nmy_schema \u003d StructType([StructField(col, DoubleType(), True) for col in m.columns])\n\nq \u003d mm.rdd.map(lambda x: [100.00 * x[i]/x[len(x) -1] for i in range(len(x)-1)]).toDF(schema \u003d my_schema)\nq.show()\n",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 2, 2018 9:39:15 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d180",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d181",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d182",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d183",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d184",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.129.13%3A8088%2Fproxy%2Fapplication_1538489759438_0002/jobs/job?spark\u003dtrue\u0026id\u003d185"
+          ],
+          "interpreterSettingId": "2DM2QAA2B656181532106861417"
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1538514752166_91210198",
+      "id": "20181002-211232_640988993_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+------------------+-----------------+-----------------+\n|                 a|                b|                c|\n+------------------+-----------------+-----------------+\n|              50.0|             50.0|              0.0|\n|              20.0|             30.0|             50.0|\n|26.666666666666668|6.666666666666667|66.66666666666667|\n+------------------+-----------------+-----------------+\n\n"
+      },
+      "dateCreated": "Oct 2, 2018 9:12:32 PM",
+      "dateSubmitted": "Oct 2, 2018 9:38:06 PM",
+      "dateStarted": "Oct 2, 2018 9:38:06 PM",
+      "dateFinished": "Oct 2, 2018 9:38:07 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "title": "5. VectorSlicer",
+      "text": "from pyspark.ml.feature import VectorSlicer\nfrom pyspark.ml.linalg import Vectors\nfrom pyspark.sql.types import Row\n\ndf \u003d spark.createDataFrame([\n    Row(userFeatures\u003dVectors.sparse(3, {0: -2.0, 1: 2.3})),\n    Row(userFeatures\u003dVectors.dense([-2.0, 2.3, 0.0]))])\n\ndf.show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 10, 2018 5:00:32 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/jobs/job?spark\u003dtrue\u0026id\u003d1",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/jobs/job?spark\u003dtrue\u0026id\u003d2"
+          ],
+          "interpreterSettingId": "2CM8C2HDY328251497549837570"
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 0,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 0,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/stages/stage/?id\u003d0\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 1,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/jobs/job?spark\u003dtrue\u0026id\u003d1",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 1,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/stages/stage/?id\u003d1\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 2,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/jobs/job?spark\u003dtrue\u0026id\u003d2",
+            "numTasks": 5,
+            "numCompletedTasks": 5,
+            "stages": [
+              {
+                "id": 2,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.102%3A8088%2Fproxy%2Fapplication_1539190667761_0001/stages/stage/?id\u003d2\u0026attempt\u003d0",
+                "numCompleteTasks": 5,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 5
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 10,
+        "numTasks": 10,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1539044753094_272486888",
+      "id": "20181009-002553_1977353918_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+--------------------+\n|        userFeatures|\n+--------------------+\n|(3,[0,1],[-2.0,2.3])|\n|      [-2.0,2.3,0.0]|\n+--------------------+\n\n"
+      },
+      "dateCreated": "Oct 9, 2018 12:25:53 AM",
+      "dateSubmitted": "Oct 10, 2018 5:00:32 PM",
+      "dateStarted": "Oct 10, 2018 5:01:04 PM",
+      "dateFinished": "Oct 10, 2018 5:01:16 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "slicer \u003d VectorSlicer(inputCol\u003d\"userFeatures\", outputCol\u003d\"features\", indices\u003d[0,1])\n\noutput \u003d slicer.transform(df)\n\noutput.select(\"userFeatures\", \"features\").show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 9, 2018 8:35:37 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d6",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d7",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d8"
+          ],
+          "interpreterSettingId": "2CM8C2HDY328251497549837570"
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 6,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d6",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 6,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d6\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 7,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d7",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 7,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d7\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 8,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d8",
+            "numTasks": 5,
+            "numCompletedTasks": 5,
+            "stages": [
+              {
+                "id": 8,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d8\u0026attempt\u003d0",
+                "numCompleteTasks": 5,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 5
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 10,
+        "numTasks": 10,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1539117218002_2030193748",
+      "id": "20181009-203338_479655625_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+--------------------+--------------------+\n|        userFeatures|            features|\n+--------------------+--------------------+\n|(3,[0,1],[-2.0,2.3])|(2,[0,1],[-2.0,2.3])|\n|      [-2.0,2.3,0.0]|          [-2.0,2.3]|\n+--------------------+--------------------+\n\n"
+      },
+      "dateCreated": "Oct 9, 2018 8:33:38 PM",
+      "dateSubmitted": "Oct 9, 2018 8:35:37 PM",
+      "dateStarted": "Oct 9, 2018 8:35:37 PM",
+      "dateFinished": "Oct 9, 2018 8:35:37 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "from pyspark.ml.feature import PCA\nfrom pyspark.ml.linalg import Vectors\n\ndata \u003d [(Vectors.sparse(5, [(1, 1.0), (3, 7.0)]),),\n        (Vectors.dense([2.0, 0.0, 3.0, 4.0, 5.0]),),\n        (Vectors.dense([4.0, 0.0, 0.0, 6.0, 7.0]),)]\ndf \u003d spark.createDataFrame(data, [\"features\"])\n\ndf.show()",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 9, 2018 8:38:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d9",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d10",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d11"
+          ],
+          "interpreterSettingId": "2CM8C2HDY328251497549837570"
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 9,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d9",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 9,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d9\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 10,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d10",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 10,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d10\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 11,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d11",
+            "numTasks": 5,
+            "numCompletedTasks": 5,
+            "stages": [
+              {
+                "id": 11,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d11\u0026attempt\u003d0",
+                "numCompleteTasks": 5,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 5
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 10,
+        "numTasks": 10,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1539117303909_-2146500749",
+      "id": "20181009-203503_803736227_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+--------------------+\n|            features|\n+--------------------+\n| (5,[1,3],[1.0,7.0])|\n|[2.0,0.0,3.0,4.0,...|\n|[4.0,0.0,0.0,6.0,...|\n+--------------------+\n\n"
+      },
+      "dateCreated": "Oct 9, 2018 8:35:03 PM",
+      "dateSubmitted": "Oct 9, 2018 8:38:22 PM",
+      "dateStarted": "Oct 9, 2018 8:38:22 PM",
+      "dateFinished": "Oct 9, 2018 8:38:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "pca \u003d PCA(k\u003d3, inputCol\u003d\"features\", outputCol\u003d\"pcaFeatures\")\nmodel \u003d pca.fit(df)\n\nresult \u003d model.transform(df).select(\"pcaFeatures\")\nresult.show(truncate\u003dFalse)",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 9, 2018 8:39:37 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d21",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d22",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d23",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d24",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d25",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d26",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d27",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d28",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d29"
+          ],
+          "interpreterSettingId": "2CM8C2HDY328251497549837570"
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 21,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d21",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 23,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d23\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 22,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d22",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 24,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d24\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 23,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d23",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 25,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d25\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 24,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d24",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 26,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d26\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 25,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d25",
+            "numTasks": 12,
+            "numCompletedTasks": 12,
+            "stages": [
+              {
+                "id": 27,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d27\u0026attempt\u003d0",
+                "numCompleteTasks": 10,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 10
+              },
+              {
+                "id": 28,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d28\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 26,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d26",
+            "numTasks": 12,
+            "numCompletedTasks": 12,
+            "stages": [
+              {
+                "id": 30,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d30\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              },
+              {
+                "id": 29,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d29\u0026attempt\u003d0",
+                "numCompleteTasks": 10,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 10
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 27,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d27",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 31,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d31\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 28,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d28",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 32,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d32\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 29,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d29",
+            "numTasks": 5,
+            "numCompletedTasks": 5,
+            "stages": [
+              {
+                "id": 33,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d33\u0026attempt\u003d0",
+                "numCompleteTasks": 5,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 5
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 44,
+        "numTasks": 44,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1539117553953_-512519788",
+      "id": "20181009-203913_187557850_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+-----------------------------------------------------------+\n|pcaFeatures                                                |\n+-----------------------------------------------------------+\n|[1.6485728230883807,-4.013282700516296,-5.524543751369388] |\n|[-4.645104331781534,-1.1167972663619026,-5.524543751369387]|\n|[-6.428880535676489,-5.337951427775355,-5.524543751369389] |\n+-----------------------------------------------------------+\n\n"
+      },
+      "dateCreated": "Oct 9, 2018 8:39:13 PM",
+      "dateSubmitted": "Oct 9, 2018 8:39:37 PM",
+      "dateStarted": "Oct 9, 2018 8:39:38 PM",
+      "dateFinished": "Oct 9, 2018 8:39:38 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "pca \u003d PCA(k\u003d5, inputCol\u003d\"features\", outputCol\u003d\"pcaFeatures\")\nmodel \u003d pca.fit(df)\n\nresult \u003d model.transform(df).select(\"pcaFeatures\")\nresult.show(truncate\u003dFalse)",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 9, 2018 8:38:44 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d12",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d13",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d14",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d15",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d16",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d17",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d18",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d19",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d20"
+          ],
+          "interpreterSettingId": "2CM8C2HDY328251497549837570"
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 12,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d12",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 12,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d12\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 13,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d13",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 13,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d13\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 14,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d14",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 14,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d14\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 15,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d15",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 15,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d15\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 16,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d16",
+            "numTasks": 12,
+            "numCompletedTasks": 12,
+            "stages": [
+              {
+                "id": 16,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d16\u0026attempt\u003d0",
+                "numCompleteTasks": 10,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 10
+              },
+              {
+                "id": 17,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d17\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 17,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d17",
+            "numTasks": 12,
+            "numCompletedTasks": 12,
+            "stages": [
+              {
+                "id": 19,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d19\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              },
+              {
+                "id": 18,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d18\u0026attempt\u003d0",
+                "numCompleteTasks": 10,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 10
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 18,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d18",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 20,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d20\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 19,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d19",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 21,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d21\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 20,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d20",
+            "numTasks": 5,
+            "numCompletedTasks": 5,
+            "stages": [
+              {
+                "id": 22,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d22\u0026attempt\u003d0",
+                "numCompleteTasks": 5,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 5
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 44,
+        "numTasks": 44,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1539117430146_621149686",
+      "id": "20181009-203710_1331457827_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+--------------------------------------------------------------------------------------------------+\n|pcaFeatures                                                                                       |\n+--------------------------------------------------------------------------------------------------+\n|[1.6485728230883807,-4.013282700516296,-5.524543751369388,0.1725834469163086,0.7908229294645973]  |\n|[-4.645104331781534,-1.1167972663619026,-5.524543751369387,0.17258344691630922,0.7908229294645972]|\n|[-6.428880535676489,-5.337951427775355,-5.524543751369389,0.17258344691630967,0.7908229294645973] |\n+--------------------------------------------------------------------------------------------------+\n\n"
+      },
+      "dateCreated": "Oct 9, 2018 8:37:10 PM",
+      "dateSubmitted": "Oct 9, 2018 8:38:44 PM",
+      "dateStarted": "Oct 9, 2018 8:38:44 PM",
+      "dateFinished": "Oct 9, 2018 8:38:52 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "pca \u003d PCA(k\u003d5, inputCol\u003d\"features\", outputCol\u003d\"pcaFeatures\")\nmodel \u003d pca.fit(df)\n\nresult \u003d model.transform(df).select(\"pcaFeatures\")\n\nslicer \u003d VectorSlicer(inputCol\u003d\"pcaFeatures\", outputCol\u003d\"features\", indices\u003d[i for i in range(3)])\n\noutput \u003d slicer.transform(result)\n\noutput.select(\"pcaFeatures\", \"features\").show(truncate \u003d False)",
+      "user": "fberhane@gannett.com",
+      "dateUpdated": "Oct 9, 2018 8:41:43 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d30",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d31",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d32",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d33",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d34",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d35",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d36",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d37",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d38"
+          ],
+          "interpreterSettingId": "2CM8C2HDY328251497549837570"
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 30,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d30",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 34,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d34\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 31,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d31",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 35,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d35\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 32,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d32",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 36,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d36\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 33,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d33",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 37,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d37\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 34,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d34",
+            "numTasks": 12,
+            "numCompletedTasks": 12,
+            "stages": [
+              {
+                "id": 38,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d38\u0026attempt\u003d0",
+                "numCompleteTasks": 10,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 10
+              },
+              {
+                "id": 39,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d39\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 35,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d35",
+            "numTasks": 12,
+            "numCompletedTasks": 12,
+            "stages": [
+              {
+                "id": 40,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d40\u0026attempt\u003d0",
+                "numCompleteTasks": 10,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 10
+              },
+              {
+                "id": 41,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d41\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 36,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d36",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 42,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d42\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 37,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d37",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 43,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d43\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          },
+          {
+            "id": 38,
+            "jobUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/jobs/job?spark\u003dtrue\u0026id\u003d38",
+            "numTasks": 5,
+            "numCompletedTasks": 5,
+            "stages": [
+              {
+                "id": 44,
+                "completed": true,
+                "stageUrl": "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.148.130.44%3A8088%2Fproxy%2Fapplication_1539115383928_0001/stages/stage/?id\u003d44\u0026attempt\u003d0",
+                "numCompleteTasks": 5,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 5
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 44,
+        "numTasks": 44,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1539117546610_-1055616669",
+      "id": "20181009-203906_1732560061_q_Q7WM1D6HH51538192977",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "+--------------------------------------------------------------------------------------------------+-----------------------------------------------------------+\n|pcaFeatures                                                                                       |features                                                   |\n+--------------------------------------------------------------------------------------------------+-----------------------------------------------------------+\n|[1.6485728230883807,-4.013282700516296,-5.524543751369388,0.1725834469163086,0.7908229294645973]  |[1.6485728230883807,-4.013282700516296,-5.524543751369388] |\n|[-4.645104331781534,-1.1167972663619026,-5.524543751369387,0.17258344691630922,0.7908229294645972]|[-4.645104331781534,-1.1167972663619026,-5.524543751369387]|\n|[-6.428880535676489,-5.337951427775355,-5.524543751369389,0.17258344691630967,0.7908229294645973] |[-6.428880535676489,-5.337951427775355,-5.524543751369389] |\n+--------------------------------------------------------------------------------------------------+-----------------------------------------------------------+\n\n"
+      },
+      "dateCreated": "Oct 9, 2018 8:39:06 PM",
+      "dateSubmitted": "Oct 9, 2018 8:41:43 PM",
+      "dateStarted": "Oct 9, 2018 8:41:43 PM",
+      "dateFinished": "Oct 9, 2018 8:41:44 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1539117524076_-1422297694",
+      "id": "20181009-203844_373256685_q_Q7WM1D6HH51538192977",
+      "dateCreated": "Oct 9, 2018 8:38:44 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "collection",
+  "id": "Q7WM1D6HH51538192977",
+  "angularObjects": {
+    "2CMMR4WFS328251497549837621:shared_process": [],
+    "2CM8C2HDY328251497549837570:shared_process": [],
+    "2CKGCSBKG328251497549837617:shared_process": [],
+    "2CK3F1E5S328251497549837615:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": ""
+  },
+  "info": {},
+  "source": "FCN"
+}
