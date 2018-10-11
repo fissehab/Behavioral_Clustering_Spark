@@ -1598,29 +1598,15 @@
       "dateFinished": "Oct 9, 2018 8:41:44 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 1000
-    },
-    {
-      "text": "",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "version": "v0",
-      "jobName": "paragraph_1539117524076_-1422297694",
-      "id": "20181009-203844_373256685_q_Q7WM1D6HH51538192977",
-      "dateCreated": "Oct 9, 2018 8:38:44 PM",
-      "status": "READY",
-      "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "collection",
   "id": "Q7WM1D6HH51538192977",
   "angularObjects": {
-    "2CMMR4WFS328251497549837621:shared_process": [],
-    "2CM8C2HDY328251497549837570:shared_process": [],
-    "2CKGCSBKG328251497549837617:shared_process": [],
-    "2CK3F1E5S328251497549837615:shared_process": []
+    "2DJH48GA9656181532106861473:shared_process": [],
+    "2DKNJ64RE656181532106861488:shared_process": [],
+    "2DM35ANMM656181532106861469:shared_process": [],
+    "2DM2QAA2B656181532106861417:shared_process": []
   },
   "config": {
     "isDashboard": false,
